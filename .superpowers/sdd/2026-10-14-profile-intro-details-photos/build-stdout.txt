@@ -1,0 +1,57 @@
+
+> twingface@0.1.0 build
+> next build
+
+   ▲ Next.js 15.3.2
+   - Environments: .env.local, .env
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 3.0s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/23) ...
+   Generating static pages (5/23) 
+   Generating static pages (11/23) 
+   Generating static pages (17/23) 
+ ✓ Generating static pages (23/23)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                     6.9 kB         111 kB
+├ ○ /_not-found                            175 B         101 kB
+├ ƒ /[username]                            175 B         101 kB
+├ ƒ /[username]/photos                     184 B         110 kB
+├ ƒ /api/auth/login                        175 B         101 kB
+├ ƒ /api/auth/logout                       175 B         101 kB
+├ ƒ /api/auth/register                     175 B         101 kB
+├ ƒ /api/health                            175 B         101 kB
+├ ƒ /api/pages                             175 B         101 kB
+├ ƒ /api/posts                             175 B         101 kB
+├ ƒ /api/posts/[id]                        175 B         101 kB
+├ ƒ /api/posts/[id]/comments               175 B         101 kB
+├ ƒ /api/profile                           175 B         101 kB
+├ ƒ /api/profile/media                     175 B         101 kB
+├ ƒ /api/user/[username]/photos            175 B         101 kB
+├ ƒ /api/user/[username]/photos/recent     175 B         101 kB
+├ ƒ /api/user/bio                          175 B         101 kB
+├ ƒ /api/user/details                      175 B         101 kB
+├ ƒ /api/user/profile                      175 B         101 kB
+├ ƒ /dashboard                           8.99 kB         137 kB
+├ ○ /login                                 139 B         130 kB
+├ ƒ /pages                               3.63 kB         108 kB
+├ ƒ /pages/create                        1.73 kB         106 kB
+├ ƒ /post/[id]                             177 B         128 kB
+├ ƒ /profile                             4.47 kB         132 kB
+├ ƒ /profile/edit                        2.02 kB         120 kB
+├ ○ /register                              139 B         130 kB
+└ ƒ /settings/profile                    2.02 kB         120 kB
++ First Load JS shared by all             101 kB
+  ├ chunks/4bd1b696-640aabc2b96c0448.js  53.2 kB
+  ├ chunks/684-f668407047b25d15.js       45.9 kB
+  └ other shared chunks (total)          1.99 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
