@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { formatAdminMetric, type AdminActivity, type SuperAdminDashboardData } from '@/lib/super-admin-dashboard';
 
 type AdminIdentity = { name: string; username: string; profileImage: string | null };
@@ -71,8 +71,8 @@ export default function SuperAdminDashboard({ admin, data }: { admin: AdminIdent
   const [actionId, setActionId] = useState<string | null>(null);
   const normalizedQuery = query.trim().toLowerCase();
   const matches = (value: string) => !normalizedQuery || value.toLowerCase().includes(normalizedQuery);
-  const filteredUsers = useMemo(() => data.recentUsers.filter((user) => matches(`${user.name} ${user.username} ${user.email ?? ''}`)), [data.recentUsers, normalizedQuery]);
-  const filteredActivities = useMemo(() => data.activities.filter((activity) => matches(activity.title)), [data.activities, normalizedQuery]);
+  const filteredUsers = data.recentUsers.filter((user) => matches(`${user.name} ${user.username} ${user.email ?? ''}`));
+  const filteredActivities = data.activities.filter((activity) => matches(activity.title));
 
   async function updateApproval(id: string, action: 'approve' | 'reject') {
     setApprovalError(null);

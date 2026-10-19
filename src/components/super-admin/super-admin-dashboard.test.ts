@@ -24,6 +24,7 @@ describe('Super Admin dashboard workspace', () => {
     expect(workspace).toContain('/api/mediaworld/approval/${id}');
     expect(workspace).toContain('setApprovalError');
     expect(workspace).toContain('setSidebarOpen');
+    expect(workspace).not.toContain('useMemo');
   });
 
   it('keeps console styling scoped and removes the obsolete MediaWorld-only panel', () => {
