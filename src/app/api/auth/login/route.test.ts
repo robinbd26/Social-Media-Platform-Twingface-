@@ -23,6 +23,7 @@ const user = {
   username: 'farah.rahman',
   email: 'farah@example.com',
   passwordHash: 'stored-hash',
+  role: 'SUPER_ADMIN' as const,
 };
 
 function request(body: unknown) {
@@ -51,7 +52,7 @@ describe('POST /api/auth/login', () => {
     expect(response.status).toBe(200);
     expect(mocks.findUnique).toHaveBeenCalledTimes(1);
     expect(mocks.findUnique).toHaveBeenCalledWith(expect.objectContaining({ where }));
-    expect(await response.json()).toEqual({ user: { id: user.id, name: user.name, username: user.username, email: user.email } });
+    expect(await response.json()).toEqual({ user: { id: user.id, name: user.name, username: user.username, email: user.email, role: 'SUPER_ADMIN' } });
   });
 
   it('accepts the legacy email request body during migration', async () => {

@@ -324,10 +324,14 @@ export default function AuthForm({ initialMode = 'login' }: { initialMode?: 'log
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ identifier, password }),
       });
+      const data = await response.json().catch(() => ({ error: t('badcred') })) as {
+        error?: string;
+        user?: { role?: string };
+      };
       if (!response.ok) {
-        throw new Error((await response.json().catch(() => ({ error: t('badcred') }))).error);
+        throw new Error(data.error ?? t('badcred'));
       }
-      window.location.assign('/dashboard');
+      window.location.assign(data.user?.role === 'SUPER_ADMIN' ? '/super_admin' : '/dashboard');
     } catch (error) {
       setMsg(error instanceof Error ? error.message : t('badcred'));
     } finally {

@@ -23,9 +23,9 @@ export async function POST(req: Request) {
     : identifier.kind === 'phone'
       ? { phone: identifier.value }
       : { username: identifier.value };
-  const user = await prisma.user.findUnique({ where, select: { id: true, name: true, username: true, email: true, passwordHash: true } });
+  const user = await prisma.user.findUnique({ where, select: { id: true, name: true, username: true, email: true, passwordHash: true, role: true } });
   if (!user || !(await verifyPassword(password, user.passwordHash))) return NextResponse.json({ error: INVALID_CREDENTIALS }, { status: 401 });
   const session = await createSession(user.id);
   await setSessionCookie(session.token, session.expiresAt);
-  return NextResponse.json({ user: { id: user.id, name: user.name, username: user.username, email: user.email } });
+  return NextResponse.json({ user: { id: user.id, name: user.name, username: user.username, email: user.email, role: user.role } });
 }

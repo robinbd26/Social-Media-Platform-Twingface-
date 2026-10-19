@@ -11,6 +11,10 @@ describe('AuthForm identity controls', () => {
     expect(source).toContain("idl: 'Email, phone, or User ID'");
   });
 
+  it('sends a super admin to its protected dashboard after login', () => {
+    expect(source).toContain("data.user?.role === 'SUPER_ADMIN' ? '/super_admin' : '/dashboard'");
+  });
+
   it('shows a generated, read-only User ID and offers a one-click password suggestion', () => {
     expect(source).toContain("const [rUsername, setRUsername] = useState(() => createSuggestedUserId(''));");
     expect(source).toContain("htmlFor='ra-username'");
