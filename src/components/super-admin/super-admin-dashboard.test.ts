@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const source = (path: string) => readFileSync(resolve(process.cwd(), path), 'utf8');
@@ -24,5 +24,15 @@ describe('Super Admin dashboard workspace', () => {
     expect(workspace).toContain('/api/mediaworld/approval/${id}');
     expect(workspace).toContain('setApprovalError');
     expect(workspace).toContain('setSidebarOpen');
+  });
+
+  it('keeps console styling scoped and removes the obsolete MediaWorld-only panel', () => {
+    const styles = source('src/app/dashboard.css');
+
+    expect(styles).toContain('.super-admin-shell');
+    expect(styles).toContain('.super-admin-sidebar');
+    expect(styles).toContain('@media (max-width:1100px)');
+    expect(styles).toContain('@media (max-width:720px)');
+    expect(existsSync(resolve(process.cwd(), 'src/components/mediaworld/mediaworld-admin-dashboard.tsx'))).toBe(false);
   });
 });
