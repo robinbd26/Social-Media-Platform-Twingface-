@@ -19,6 +19,24 @@ export type ModuleAvailability = {
   detail: string;
 };
 
+export type SuperAdminDashboardData = {
+  metrics: {
+    totalUsers: number;
+    activeUsers: number;
+    onlineUsers: number;
+    totalPosts: number;
+    marketplaceListings: number;
+    games: number;
+    pendingApprovals: number;
+  };
+  growth: DashboardDay[];
+  recentUsers: Array<{ id: string; name: string; username: string; email: string | null; profileImage: string | null; createdAt: string }>;
+  activities: AdminActivity[];
+  pendingProfiles: Array<{ id: string; fullName: string; profession: string; division: string; district: string; createdAt: string }>;
+  moduleCounts: Array<{ label: string; count: number }>;
+  systemStatus: ModuleAvailability[];
+};
+
 type DailySeriesInput = {
   end: Date;
   days: number;
